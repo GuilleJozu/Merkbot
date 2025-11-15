@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="DetalleVenta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <!-- ====== PARAMETROS ====== -->
+    <parameter name="cliente" class="java.lang.String"/>
+    <parameter name="fecha" class="java.lang.String"/>
+    <parameter name="usuario" class="java.lang.String"/>
+    <parameter name="descripcion" class="java.lang.String"/>
+
+    <!-- Lista de detalles -->
+    <field name="producto" class="java.lang.String"/>
+    <field name="cantidad" class="java.lang.Integer"/>
+
+    <!-- ======= TITULO ========= -->
+    <title>
+        <band height="90">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="40"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[📦 DETALLE DE VENTA]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="50" y="60" width="450" height="1" forecolor="#6B6B6B"/>
+            </line>
+        </band>
+    </title>
+
+    <!-- ========= ENCABEZADO DATOS GENERALES =========== -->
+    <pageHeader>
+        <band height="120">
+
+            <rectangle>
+                <reportElement x="10" y="0" width="535" height="110"  backcolor="#F5F5F5" mode="Opaque"/>
+            </rectangle>
+
+            <textField>
+                <reportElement x="30" y="15" width="250" height="20"/>
+                <textElement><font isBold="true"/></textElement>
+                <textFieldExpression><![CDATA["Cliente: " + $P{cliente}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="45" width="250" height="20"/>
+                <textFieldExpression><![CDATA["Fecha: " + $P{fecha}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="75" width="250" height="20"/>
+                <textFieldExpression><![CDATA["Registrado por: " + $P{usuario}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </pageHeader>
+
+    <!-- ========= TABLA DETALLE ============ -->
+    <columnHeader>
+        <band height="30">
+
+            <!-- Encabezado columna -->
+            <staticText>
+                <reportElement x="20" y="5" width="30" height="20" backcolor="#E6E6E6" mode="Opaque"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[#]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="70" y="5" width="320" height="20" backcolor="#E6E6E6" mode="Opaque"/>
+                <textElement textAlignment="Left">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Producto]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="420" y="5" width="90" height="20" backcolor="#E6E6E6" mode="Opaque"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Cantidad]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+
+    <!-- ========= FILAS DINÁMICAS ============ -->
+    <detail>
+        <band height="25">
+
+            <textField>
+                <reportElement x="20" y="3" width="30" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="70" y="3" width="320" height="20"/>
+                <textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="420" y="3" width="90" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+</jasperReport>

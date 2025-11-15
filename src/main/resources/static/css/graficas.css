@@ -1,0 +1,34 @@
+body {
+  background-color: #d0f7fb;
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart-height {
+  height: 350px !important;
+  width: 100% !important;
+}
+
+button.btn {
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+
+.btn-info.btn-sm,
+.btn-warning.btn-sm,
+.btn-danger.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+
+

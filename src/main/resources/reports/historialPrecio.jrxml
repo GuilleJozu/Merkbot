@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="HistorialPrecio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <!-- ================= PARAMETROS ================= -->
+    <parameter name="cliente" class="java.lang.String"/>
+    <parameter name="producto" class="java.lang.String"/>
+    <parameter name="precio" class="java.lang.String"/>
+    <parameter name="fecha" class="java.lang.String"/>
+    <parameter name="usuario" class="java.lang.String"/>
+    <parameter name="descripcion" class="java.lang.String"/>
+    <parameter name="imagen" class="java.lang.String"/>
+
+    <!-- ================= CABECERA ================= -->
+    <title>
+        <band height="90">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="40" uuid="6c18e0f1-05e5-46ba-b79a-2b5b59c875e7"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[ HISTORIAL DE PRECIO]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="50" y="60" width="450" height="1" forecolor="#6B6B6B"/>
+            </line>
+        </band>
+    </title>
+
+    <!-- ================= TARJETA / CUERPO ================= -->
+    <detail>
+        <band height="430">
+
+            <!-- Marco de tarjeta -->
+            <rectangle>
+                <reportElement x="10" y="10" width="535" height="400" backcolor="#F5F5F5" mode="Opaque"/>
+            </rectangle>
+
+            <!-- Imagen del producto -->
+            <image>
+                <reportElement x="350" y="40" width="170" height="180" backcolor="#FFFFFF" mode="Opaque"/>
+                <imageExpression><![CDATA[$P{imagen}]]></imageExpression>
+            </image>
+
+            <!-- Campos -->
+            <textField>
+                <reportElement x="30" y="40" width="300" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Cliente: " + $P{cliente}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="70" width="300" height="20"/>
+                <textFieldExpression><![CDATA["Producto: " + $P{producto}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="100" width="300" height="20"/>
+                <textFieldExpression><![CDATA["Precio: $" + $P{precio}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="130" width="300" height="20"/>
+                <textFieldExpression><![CDATA["Fecha: " + $P{fecha}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="30" y="160" width="300" height="20"/>
+                <textFieldExpression><![CDATA["Registrado por: " + $P{usuario}]]></textFieldExpression>
+            </textField>
+
+            <!-- Descripción -->
+            <staticText>
+                <reportElement x="30" y="210" width="500" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Descripción]]></text>
+            </staticText>
+
+            <textField isStretchWithOverflow="true">
+                <reportElement x="30" y="240" width="500" height="140"/>
+                <textFieldExpression><![CDATA[$P{descripcion}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+</jasperReport>
