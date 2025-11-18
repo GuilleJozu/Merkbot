@@ -23,6 +23,7 @@ public class ProductoService {
     }
     public Productos guardarProducto(Productos producto) {
         producto.setFechaHora(LocalDateTime.now());
+        producto.setActivo(true);
         return repProductos.save(producto);
     }
 
@@ -33,6 +34,9 @@ public class ProductoService {
         existente.setNombre(producto.getNombre());
         existente.setCompetencia(producto.getCompetencia());
         existente.setFoto(producto.getFoto());
+        if (producto.getActivo() != null) {
+            existente.setActivo(producto.getActivo());
+        }
 
         existente.setUpdatedAt(LocalDateTime.now());
 
