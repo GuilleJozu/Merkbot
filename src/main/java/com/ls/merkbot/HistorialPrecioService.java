@@ -55,6 +55,9 @@ public class HistorialPrecioService {
         existente.setUsuario(historialActualizado.getUsuario());
         existente.setCliente(historialActualizado.getCliente());
         existente.setProducto(historialActualizado.getProducto());
+        if (historialActualizado.getActivo() != null) {
+            existente.setActivo(historialActualizado.getActivo());
+        }
 
         existente.setUpdatedAt(LocalDateTime.now());
         
