@@ -43,6 +43,7 @@ public class UsuarioService implements UserDetailsService {
 
     public Usuarios guardarUsuarios(Usuarios usuario) {
         usuario.setFechaHora(LocalDateTime.now());
+        usuario.setActivo(true);
         return repoUsuario.save(usuario);
     }
 
@@ -58,6 +59,9 @@ public class UsuarioService implements UserDetailsService {
         existente.setUsuario(usuarioActualizado.getUsuario());
         existente.setContraseña(usuarioActualizado.getContraseña());
         existente.setRol(usuarioActualizado.getRol());
+        if (usuarioActualizado.getActivo() != null) {
+            existente.setActivo(usuarioActualizado.getActivo());
+        }
 
 
         existente.setUpdatedAt(LocalDateTime.now());
