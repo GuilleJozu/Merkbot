@@ -11,7 +11,7 @@
 	<groupId>com.ls</groupId>
 	<artifactId>merkbot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>merkbot</name>
 	<description>Project Merkbot for Empacadora San Salvador</description>
 	<url/>
@@ -28,8 +28,8 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>25</java.version>
-		<maven.compiler.release>25</maven.compiler.release>
+		<java.version>17</java.version>
+		<maven.compiler.release>17</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -96,7 +96,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
-					<release>25</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 			<plugin>
