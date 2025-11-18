@@ -37,8 +37,8 @@ public class ClientesService {
         existente.setDireccion(clientes.getDireccion());
         existente.setRfc(clientes.getRfc());
         existente.setTelefono(clientes.getTelefono());
-        if (cliente.getActivo() != null) {
-            existente.setActivo(cliente.getActivo());
+        if (clientes.getActivo() != null) {
+            existente.setActivo(clientes.getActivo());
         }
 
         existente.setUpdatedAt(LocalDateTime.now());
