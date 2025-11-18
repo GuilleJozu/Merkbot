@@ -24,6 +24,7 @@ public class ClientesService {
 
     public Clientes guardarClientes(Clientes cliente) {
         cliente.setFechaHora(LocalDateTime.now());
+        cliente.setActivo(true);
         return repClientes.save(cliente);
     }
 
@@ -36,6 +37,9 @@ public class ClientesService {
         existente.setDireccion(clientes.getDireccion());
         existente.setRfc(clientes.getRfc());
         existente.setTelefono(clientes.getTelefono());
+        if (cliente.getActivo() != null) {
+            existente.setActivo(cliente.getActivo());
+        }
 
         existente.setUpdatedAt(LocalDateTime.now());
 
