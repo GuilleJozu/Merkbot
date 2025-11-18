@@ -39,6 +39,7 @@ public class HistorialPrecioService {
     public HistorialPrecios guardarPrecio(HistorialPrecios histPrec) {
         if (histPrec.getCreatedAt() == null) {
             histPrec.setCreatedAt(LocalDateTime.now());
+            histPrec.setActivo(true);
         }
 
         return repoHistPrec.save(histPrec);
@@ -56,6 +57,7 @@ public class HistorialPrecioService {
         existente.setProducto(historialActualizado.getProducto());
 
         existente.setUpdatedAt(LocalDateTime.now());
+        
 
         return repoHistPrec.save(existente);
     }
