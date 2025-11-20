@@ -84,7 +84,7 @@ public class VentasController {
         model.addAttribute("venta",new Ventas());
         model.addAttribute("clientes", repClientes.findAll());
         model.addAttribute("usuarios", repUsuario.findAll());
-        List<Productos> productos = repProducto.findAll();
+        List<Productos> productos = repProducto.findCompetencia();
         model.addAttribute("productos", productos);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -117,7 +117,7 @@ public class VentasController {
         model.addAttribute("venta", venta);
         model.addAttribute("clientes", repClientes.findAll());
         model.addAttribute("usuarios", repUsuario.findAll());
-        List<Productos> productos = repProducto.findAll();
+        List<Productos> productos = repProducto.findCompetencia();
         model.addAttribute("productos", productos);
 
 
