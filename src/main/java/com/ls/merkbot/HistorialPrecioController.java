@@ -98,7 +98,7 @@ public class HistorialPrecioController {
         hp.setUsuario(new Usuarios());
         model.addAttribute("histPrec", new HistorialPrecios());
         model.addAttribute("clientes", repClientes.findAll());
-        model.addAttribute("productos", repProducto.findCompetencia());;
+        model.addAttribute("productos", repProducto.findAll());;
         model.addAttribute("usuarios", repUsuario.findAll());
         return "historialPrecio/nuevo_precio";
     }
