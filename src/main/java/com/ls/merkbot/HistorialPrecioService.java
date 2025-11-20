@@ -14,6 +14,8 @@ public class HistorialPrecioService {
 
     @Autowired
     private HistorialPrecioRepository repoHistPrec;
+    @Autowired
+    private UsuarioRepository repoUser;
 
 
     public List<HistorialPrecioPuntos> getVistaPrevia (Long idProducto) {
