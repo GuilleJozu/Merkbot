@@ -39,9 +39,16 @@ public class HistorialPrecioService {
     public HistorialPrecios guardarPrecio(HistorialPrecios histPrec) {
         if (histPrec.getCreatedAt() == null) {
             histPrec.setCreatedAt(LocalDateTime.now());
-            histPrec.setActivo(true);
+            
+           
         }
-
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getPrincipal())) {
+            String nombreUsuario = auth.getName();
+            repoUser.findByUsuario(nombreUsuario).ifPresent(histPrec::setUsuario);
+        }
+        histPrec.setActivo(true);
         return repoHistPrec.save(histPrec);
     }
     public HistorialPrecios actualizar(HistorialPrecios historialActualizado) {
