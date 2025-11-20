@@ -28,7 +28,7 @@ public class GraficasRestController {
 
     @GetMapping("/clientesPrecio")
     public List<HistorialPrecioPuntos> getClientePrecio() {
-        return servicioHistPrec.getVistaPrevia(1L);
+        return servicioHistPrec.getVistaPrevia(4L);
     }
 
     @GetMapping("competenciaComparativa")
@@ -38,7 +38,7 @@ public class GraficasRestController {
 
     @GetMapping("/ventasGrafica")
     public List<VentasPuntos> getVentasGrafica(){
-        return servicioVenta.getVentasPorProductoyCliente(1L,null);
+        return servicioVenta.getVentasPorProductoyCliente(4L,null);
     }
 
     @GetMapping("/detallada/clientesPrecio")
