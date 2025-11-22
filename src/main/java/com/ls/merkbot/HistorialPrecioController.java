@@ -55,9 +55,12 @@ public class HistorialPrecioController {
 
         HistorialPrecios historial = servPrecios.findId(id).orElseThrow();
 
-        File file = ResourceUtils.getFile("classpath:reports/historialPrecio.jrxml");
+        InputStream reportStream = getClass().getResourceAsStream("/reports/historialPrecio.jrxml");
+        if (reportStream == null) {
+        throw new FileNotFoundException("No se encontró /reports/historialPrecio.jrxml en el classpath");
+        }
 
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
         Map<String,Object> params = new HashMap<>();
         params.put("cliente", historial.getCliente().getNombre());
@@ -68,17 +71,18 @@ public class HistorialPrecioController {
         params.put("descripcion", historial.getDescripcion());
         String imgName = historial.getProducto().getFoto();
         String imgPath = null;
+        String uploadsPath = "uploads/";
 
         if (imgName != null && !imgName.isBlank()) {
-            File imgFile = new File("imagenes/" + imgName);
+            File imgFile = new File(uploadsPath + imgName);
             if (imgFile.exists()) {
                 imgPath = imgFile.getAbsolutePath();
             } else {
                 System.out.println("Imagen no encontrada: " + imgFile.getAbsolutePath());
             }
         }
-        if (imgPath == null) {
-        }
+        
+        
 
         params.put("imagen", imgPath);
         JasperPrint print = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
