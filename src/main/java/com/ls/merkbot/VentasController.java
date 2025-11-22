@@ -56,9 +56,12 @@ public class VentasController {
         Ventas venta = serviceVentas.findId(id).orElseThrow();
         List<VentaDetalles> detalles = venta.getDetalles();
 
-        File archivo = ResourceUtils.getFile("classpath:reports/detalleVenta.jrxml");
-        JasperReport reporte = JasperCompileManager.compileReport(archivo.getAbsolutePath());
-
+        InputStream reporte = getClass().getResourceAsStream("/reports/detalleVenta.jrxml");
+        
+        if (reporte == null) {
+        throw new FileNotFoundException("No se encontró detalleVenta.jasper en /reports dentro del JAR");
+        }
+        
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("cliente", venta.getCliente().getNombre());
         parametros.put("fecha", venta.getFecha().toString());
