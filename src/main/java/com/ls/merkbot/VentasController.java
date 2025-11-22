@@ -63,6 +63,9 @@ public class VentasController {
         if (reporte == null) {
         throw new FileNotFoundException("No se encontró detalleVenta.jasper en /reports dentro del JAR");
         }
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
+
         
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("cliente", venta.getCliente().getNombre());
@@ -75,7 +78,7 @@ public class VentasController {
                         .toList()
         );
 
-        JasperPrint print = JasperFillManager.fillReport(reporte, parametros, datasource);
+        JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, datasource);
 
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=Venta_" + id + ".pdf");
