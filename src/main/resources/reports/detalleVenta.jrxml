@@ -10,9 +10,40 @@
     <parameter name="usuario" class="java.lang.String"/>
     <parameter name="descripcion" class="java.lang.String"/>
 
+    <!-- Nuevo parámetro para logo -->
+    <parameter name="logo" class="java.lang.String"/>
+
     <!-- Lista de detalles -->
     <field name="producto" class="java.lang.String"/>
     <field name="cantidad" class="java.lang.Integer"/>
+
+    <!-- ======= MEMBRETE Y LOGO ======= -->
+    <background>
+        <band height="80">
+
+            <!-- Línea verde tipo membrete -->
+            <rectangle>
+                <reportElement x="0" y="0" width="595" height="50" backcolor="#2ECC71" mode="Opaque"/>
+            </rectangle>
+
+            <!-- Logo -->
+            <image scaleImage="RetainShape">
+                <reportElement x="20" y="5" width="120" height="40"/>
+                <imageExpression><![CDATA[$P{logo}]]></imageExpression>
+            </image>
+
+            <!-- Texto Empresa (opcional decorativo) -->
+            <staticText>
+                <reportElement x="160" y="10" width="400" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Left">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[AM Transformando Ideas]]></text>
+            </staticText>
+
+        </band>
+    </background>
+
 
     <!-- ======= TITULO ========= -->
     <title>
@@ -36,7 +67,7 @@
         <band height="120">
 
             <rectangle>
-                <reportElement x="10" y="0" width="535" height="110"  backcolor="#F5F5F5" mode="Opaque"/>
+                <reportElement x="10" y="0" width="535" height="110" backcolor="#F5F5F5" mode="Opaque"/>
             </rectangle>
 
             <textField>
@@ -89,7 +120,6 @@
 
         </band>
     </columnHeader>
-
 
     <!-- ========= FILAS DINÁMICAS ============ -->
     <detail>
