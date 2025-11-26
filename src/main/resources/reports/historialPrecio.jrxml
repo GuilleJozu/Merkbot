@@ -13,15 +13,43 @@
     <parameter name="descripcion" class="java.lang.String"/>
     <parameter name="imagen" class="java.lang.String"/>
 
+    <!-- 🆕 Parámetro para logo en InputStream -->
+    <parameter name="logo" class="java.io.InputStream"/>
+
+    <!-- ================= MEMBRETE Y LOGO ================= -->
+    <background>
+        <band height="80">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="595" height="50" backcolor="#2ECC71" mode="Opaque"/>
+            </rectangle>
+
+            <!-- Logo desde InputStream (controller compatible con .jar) -->
+            <image scaleImage="RetainShape">
+                <reportElement x="20" y="5" width="120" height="40"/>
+                <imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
+            </image>
+
+            <staticText>
+                <reportElement x="160" y="10" width="400" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Left">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Empacadora San Salvador]]></text>
+            </staticText>
+
+        </band>
+    </background>
+
     <!-- ================= CABECERA ================= -->
     <title>
         <band height="90">
             <staticText>
-                <reportElement x="0" y="10" width="555" height="40" uuid="6c18e0f1-05e5-46ba-b79a-2b5b59c875e7"/>
+                <reportElement x="0" y="10" width="555" height="40"/>
                 <textElement textAlignment="Center">
                     <font size="18" isBold="true"/>
                 </textElement>
-                <text><![CDATA[ HISTORIAL DE PRECIO]]></text>
+                <text><![CDATA[HISTORIAL DE PRECIO]]></text>
             </staticText>
 
             <line>
@@ -30,22 +58,19 @@
         </band>
     </title>
 
-    <!-- ================= TARJETA / CUERPO ================= -->
+    <!-- ================= CUERPO ================= -->
     <detail>
         <band height="430">
 
-            <!-- Marco de tarjeta -->
             <rectangle>
                 <reportElement x="10" y="10" width="535" height="400" backcolor="#F5F5F5" mode="Opaque"/>
             </rectangle>
 
-            <!-- Imagen del producto -->
             <image>
                 <reportElement x="350" y="40" width="170" height="180" backcolor="#FFFFFF" mode="Opaque"/>
                 <imageExpression><![CDATA[$P{imagen}]]></imageExpression>
             </image>
 
-            <!-- Campos -->
             <textField>
                 <reportElement x="30" y="40" width="300" height="20"/>
                 <textElement>
@@ -74,7 +99,6 @@
                 <textFieldExpression><![CDATA["Registrado por: " + $P{usuario}]]></textFieldExpression>
             </textField>
 
-            <!-- Descripción -->
             <staticText>
                 <reportElement x="30" y="210" width="500" height="20"/>
                 <textElement>
