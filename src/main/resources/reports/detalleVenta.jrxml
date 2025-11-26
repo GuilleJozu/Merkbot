@@ -38,7 +38,7 @@
                 <textElement textAlignment="Left">
                     <font size="16" isBold="true"/>
                 </textElement>
-                <text><![CDATA[AM Transformando Ideas]]></text>
+                <text><![CDATA[Empacadora San Salvador]]></text>
             </staticText>
 
         </band>
@@ -53,7 +53,7 @@
                 <textElement textAlignment="Center">
                     <font size="18" isBold="true"/>
                 </textElement>
-                <text><![CDATA[📦 DETALLE DE VENTA]]></text>
+                <text><![CDATA[DETALLE DE VENTA]]></text>
             </staticText>
 
             <line>
