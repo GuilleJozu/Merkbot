@@ -64,6 +64,11 @@ public class VentasController {
         throw new FileNotFoundException("No se encontró detalleVenta.jasper en /reports dentro del JAR");
         }
 
+        URL logoUrl = getClass().getResource("/reports/logo.png");
+        if (logoUrl == null) {
+        throw new FileNotFoundException("No se encontró logo.png en /reports dentro del JAR (ruta: /reports/logo.png)");
+        }
+
         JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
 
         
@@ -71,6 +76,7 @@ public class VentasController {
         parametros.put("cliente", venta.getCliente().getNombre());
         parametros.put("fecha", venta.getFecha().toString());
         parametros.put("usuario", venta.getUsuario().getNombre());
+        parametros.put("logo", logoUrl.toString());
 
         JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(
                 detalles.stream()
