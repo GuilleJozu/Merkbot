@@ -71,6 +71,14 @@ public class HistorialPrecioController {
         params.put("fecha", historial.getCreatedAt().toString());
         params.put("usuario", historial.getUsuario().getNombre());
         params.put("descripcion", historial.getDescripcion());
+
+        java.net.URL logoURL = getClass().getResource("/reports/logo.png");
+        if (logoURL == null) {
+        throw new FileNotFoundException("No se encontró logo.png en /reports dentro del JAR");
+        }
+        params.put("logo", logoURL.toString());
+
+        
         String imgName = historial.getProducto().getFoto();
         String imgPath = null;
         String uploadsPath = "uploads/";
